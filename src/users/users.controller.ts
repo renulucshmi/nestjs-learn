@@ -1,17 +1,18 @@
-import { Controller, Get, Param, Post } from "@nestjs/common";
+import { Controller, Get, Param, Post, Query } from "@nestjs/common";
 import { UsersService } from "./users.service";
 
 @Controller('users')
 export class UsersController {
     @Get()
-    getUsers() {
+    getUsers(@Query() query: any) {
         const usersService = new UsersService();
+        console.log(query);
         return usersService.getAllUsers();
     }
-    @Get(':id/:name/:gender')
-    getUserById(@Param('id') id: number) {
-        console.log(Param);
-        return id;
+    @Get(':id')
+    getUserById(@Param('id') id: any) {
+        const usersService = new UsersService();
+        return usersService.getUserById(+id);
     }
     @Post()
     createUser() {
