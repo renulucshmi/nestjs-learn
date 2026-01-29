@@ -1,3 +1,6 @@
+import { Injectable } from "@nestjs/common";
+
+@Injectable()
 export class UsersService {
     users: { id: number, name: string, email: string, gender: string, isMarried: boolean }[] = [
         { id: 1, name: "Renu", email: "renu@gmail.com", gender: "Female", isMarried: false },
@@ -8,7 +11,7 @@ export class UsersService {
         return this.users;
     }
 
-    getUserById(id: number) {
+    getUserById(id: Number) {
         return this.users.find(x => x.id === id)
     }
 

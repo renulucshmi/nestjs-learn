@@ -6,10 +6,9 @@ import { GetUserParamDto } from "./dtos/get-user-param.dto";
 
 @Controller('users')
 export class UsersController {
-    usersService = new UsersService;
+ 
 
-    constructor() {
-        this.usersService = new UsersService();
+    constructor(private usersService:UsersService) {
     }
     @Get(':isMarried')
     getUsers(@Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number, @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
@@ -32,9 +31,10 @@ export class UsersController {
         return 'A new user with id ' + user.id + ' has been created';
     }
     @Patch()
-    updateUser(@Body() body: UpdateUserDto) {
-        console.log(body);
-    }
+    updateUser(@Body() user: UpdateUserDto) {
+        console.log(user);
+    return 'user updated successfully';
+}
 }
 
 
