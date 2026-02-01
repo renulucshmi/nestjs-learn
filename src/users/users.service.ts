@@ -11,7 +11,7 @@ export class UsersService {
         return this.users;
     }
 
-    getUserById(id: Number) {
+    getUserById(id: number) {
         return this.users.find(x => x.id === id)
     }
 
